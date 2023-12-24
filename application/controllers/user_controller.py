@@ -1,13 +1,17 @@
+# standard library
 from http import HTTPStatus
+
+# third party library
 from flask import Response, request
 
-from App import app
-from services import UserService
+# local library
+from ..app import app
+from ..services import user_service
 
 @app.route("/user/<id>", methods=["GET"])
 def get_user(id: int):
     try:
-        user = UserService.get_user(id)
+        user = user_service.get_user(id)
         return user.jsonify()
     except AttributeError:
         return {"message": "no elements found"}, HTTPStatus.BAD_REQUEST
@@ -19,7 +23,7 @@ def create_user():
     try:
         req = request.get_json()
         
-        new_user = UserService.create_user(
+        new_user = user_service.create_user(
             req["fullname"], 
             req["email"]
         )
@@ -36,7 +40,7 @@ def modify_user(id: int):
     try:
         req = request.get_json()
         
-        user = UserService.modify_user(
+        user = user_service.modify_user(
             id,
             req["fullname"], 
             req["email"]
@@ -52,7 +56,7 @@ def modify_user(id: int):
 @app.route("/user/<id>", methods=["DELETE"])
 def remove_user(id: int):
     try:
-        user = UserService.remove_user(id)
+        user = user_service.remove_user(id)
         return user.jsonify()
     except AttributeError:
         return {"message": "no elements found"}, HTTPStatus.BAD_REQUEST

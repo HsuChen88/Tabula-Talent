@@ -3,6 +3,7 @@
 
 # Another class that extends this class has to implement all interface's functions.
 
+# RogelioKG's Note: This class should inherit from ABC
 class Jsonifiable():
     def jsonify(self):
         pass
