@@ -1,8 +1,6 @@
-# local library
-from application.app import app, db
-from application.tests import tests_job, tests_applicant
+# # third party library
+# from app.App import app, db
 
+# if __name__ == "__main__":
 
-
-if __name__ == "__main__":
-    app.run()
+#         app.run()

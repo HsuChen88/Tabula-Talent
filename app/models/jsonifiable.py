@@ -3,7 +3,7 @@
 
 # Another class that extends this class has to implement all interface's functions.
 
-# RogelioKG's Note: This class should inherit from ABC
+# 因為我們的子類別需繼承 db.Model，這裡無法繼承 abc.ABC 做限制
 class Jsonifiable():
     def jsonify(self):
-        pass
+        return NotImplemented

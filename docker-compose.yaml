@@ -2,8 +2,9 @@ services:
   db:
     restart: always
     image: postgres
+    user: postgres
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
+      # - POSTGRES_USER=${POSTGRES_USER} (FATAL: role "root" does not exist error)
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     expose: 

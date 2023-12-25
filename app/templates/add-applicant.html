@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Applicant</title>
+    </head>
+    <body>
+        <form action="/submit/applicant" method="post">
+            <div>
+                <p>Position:</p>
+            </div>
+            <div>
+                <p>Resume Image File:</p>
+                <input type="file" name="resume-file" accept="image/*">
+            </div>
+            <div>
+                <p>Resume Information:</p>
+                <input type="text" name="name" value="name">
+                <input type="text" name="email" value="email">
+                <input type="text" name="phone" value="phone">
+                <ul value="Links">
+                    <li><a href="#">link 1</a></li>
+                    <li><a href="#">link 2</a></li>
+                </ul>
+            </div>
+            <button>Verify</button>
+        </form>
+    </body>
+</html>

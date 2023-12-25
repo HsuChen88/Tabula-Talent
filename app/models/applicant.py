@@ -1,27 +1,9 @@
 # standard library
 from typing import Any
 
-# third party library
-from sqlalchemy.orm import validates
-
 # local library
-from ..app import db
-from .jsonifiable import Jsonifiable
-
-
-# CREATE TABLE Applicant (
-#     id SERIAL PRIMARY KEY,
-#     name VARCHAR(30) NOT NULL, 
-#     phone VARCHAR(15),
-#     email TEXT,
-#     link JSON,
-#     major JSON,
-#     questions JSON
-#     skill_score INT,
-#     experience_score INT,
-#     interview_score INT,
-#     position VARCHAR(50) NOT NULL -- FOREIGN KEY
-# );
+from App import db
+from models.jsonifiable import Jsonifiable
 
 class Applicant(db.Model, Jsonifiable):
     __tablename__ = "applicant"
@@ -36,20 +18,20 @@ class Applicant(db.Model, Jsonifiable):
     skill_score = db.Column(db.Integer)
     experience_score = db.Column(db.Integer)
     interview_score = db.Column(db.Integer)
-    position = db.Column(db.String(50), nullable=False)
+    job_id = db.Column(db.Integer, db.ForeignKey("job.id"), nullable=False)
 
     def __init__(
         self,
-        name,
-        phone,
-        email,
-        link,
-        major,
-        questions,
-        skill_score,
-        experience_score,
-        interview_score,
-        position
+        name: str,
+        phone: str,
+        email: str,
+        link: str | dict[str, Any],
+        major: str,
+        questions: str | dict[str, Any],
+        skill_score: int,
+        experience_score: int,
+        interview_score: int,
+        job_id: int
     ) -> None:
         self.name = name
         self.phone = phone
@@ -60,9 +42,10 @@ class Applicant(db.Model, Jsonifiable):
         self.skill_score = skill_score
         self.experience_score = experience_score
         self.interview_score = interview_score
-        self.position = position
+        self.job_id = job_id
 
     def jsonify(self) -> dict[str, Any]:
+        # 在 commit 後 __dict__ 會發生一些變動，因而只能手動列
         return {
             "id": self.id,
             "name": self.name,
@@ -73,5 +56,5 @@ class Applicant(db.Model, Jsonifiable):
             "skill_score": self.skill_score,
             "experience_score": self.experience_score,
             "interview_score": self.interview_score,
-            "position": self.position
+            "job_id": self.job_id
         }
