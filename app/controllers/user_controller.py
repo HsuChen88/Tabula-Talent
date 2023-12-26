@@ -5,8 +5,8 @@ from http import HTTPStatus
 from flask import Response, request
 
 # local library
-from ..app import app
-from ..services import user_service
+from App import app
+from services import user_service
 
 @app.route("/user/<id>", methods=["GET"])
 def get_user(id: int):

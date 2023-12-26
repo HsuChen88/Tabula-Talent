@@ -1,6 +1,6 @@
 # local library
-from ..models.user import User
-from ..app import db
+from models.user import User
+from App import db
 
 # C
 def create_user(fullname, email):
