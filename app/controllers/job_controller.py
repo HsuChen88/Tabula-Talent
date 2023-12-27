@@ -9,9 +9,9 @@ from App import app, db
 from models.job import Job
 from services import job_service
 
-@app.route("/")
-def index_template():
-    return "<h1>Hello Flask!</h1>"
+@app.route("/job-list")
+def show_jobs():
+    return render_template("jobs.html")
 
 @app.route("/add_job")
 def add_job_template():
