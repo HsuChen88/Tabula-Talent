@@ -1,33 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Job</title>
-    </head>
-    <body>
-        <form action="/job" method="post">
-            <div>
-                <p>Position:</p>
-                <input type="text" name="position">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Job</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .grid-cell {
+            width: 100px;
+            height: 100px;
+        }
+
+        .input-hint {
+            color: #9CA3AF;
+            /* Tailwind gray-400 for light hint text */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-semibold text-xl tracking-tight">Tabula-Talent</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>Description:</p>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        </div>
+    </nav>
+
+
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-8 sm:px-6">
+                <h1 class="text-3xl leading-6 font-medium text-gray-900">Add Job</h1>
             </div>
-            <div>
-                <p>Responsibility:</p>
-                <textarea name="responsibility" id="responsibility" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-                <p>Requirement:</p>
-                <textarea name="requirement" id="requirement" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-                <p>Educational Qualification:</p>
-                <input type="text" name="educational-qualification">
-            </div>
-            <button type="submit">Add</button>
-        </form>
-    </body>
+            <form action="{{ url_for('add-job') }}" method="post">
+                <div class="border-t border-gray-200">
+                    <dl>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Position:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="Job1"
+                                    class="border border-gray-300 p-2 rounded-md w-full"></dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Job Description:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"> <textarea name="description"
+                                    id="description" class="border border-gray-300 rounded-md w-full" cols="10"
+                                    rows="10">something</textarea>
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Responsibility:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><textarea name="responsility"
+                                    id="responsility" class="border border-gray-300 rounded-md w-full" cols="10"
+                                    rows="10">something</textarea></dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Requirement:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><textarea name="requirement"
+                                    id="requirement" class="border border-gray-300 rounded-md w-full" cols="10"
+                                    rows="10">something</textarea></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Educational Qualification:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><textarea name="education"
+                                    id="education" class="border border-gray-300 rounded-md" cols="60"
+                                    rows="10">something</textarea></dd>
+                        </div>
+                    </dl>
+                </div>
+            </form>
+        </div>
+        <button id="addBtn" onclick="alert('add')" type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4">Add</button>
+    </div>
+    
+    <script></script>
+
+</body>
+
 </html>
