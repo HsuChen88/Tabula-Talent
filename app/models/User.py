@@ -1,7 +1,9 @@
+# third party library
 from sqlalchemy.orm import validates
-
+ 
+# local library
 from App import db
-from models.Jsonifiable import Jsonifiable
+from models.jsonifiable import Jsonifiable
 
 class User(db.Model, Jsonifiable):
     __tablename__ = 'user'

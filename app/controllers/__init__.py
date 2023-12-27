@@ -1,4 +1,5 @@
 __all__ = [
-    "HelloController",
-    "UserController"
-    ]
+    "applicant_controller",
+    "job_controller",
+    "user_controller"
+]
