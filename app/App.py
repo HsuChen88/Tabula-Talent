@@ -23,8 +23,3 @@ with app.app_context():
     db.create_all() # 如果資料庫沒有建置表格的話，全部建置
 
 from controllers import *
-
-@app.route("/")
-def index_template():
-    return "<h1>Hello Flask!</h1>"
-
