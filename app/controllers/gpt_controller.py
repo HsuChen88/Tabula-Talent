@@ -1,35 +1,22 @@
-# from models.gpt_message import GptMessage
+from services import gpt_service
+from flask import render_template
+from App import app
+from services import job_service
 
-# from App import client_gpt, app
+@app.route("/applicant-assessment")
+def applicant_assessment(applicant:str, email:str, phone:str, links:list, major:str, skill_score:int, experience_score:int, questions:list):
 
-# def get_resume_text():
+    job_requirement = job_service.get_job()
+    result_dict = gpt_service.get_scoring_and_question(job_requirement)
     
-#     resume_text = ""
-    
-#     with open("../resource/recognized.txt", "r", encoding="utf-8") as file:
-#         for line in file:
-#             resume_text += line
-    
-#     return resume_text
+    applicant = result_dict['Applicant']
+    email = result_dict['Email']
+    phone = result_dict['Position']
+    links = result_dict['Phone']    # list
 
-# @app.route("/applicant-assessment")
-# def get_applicant_scoring(job_requirement: str) -> dict:
-
-#     resume_text = get_resume_text()
-#     response = client_gpt.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=[
-#             {"role": "system", "content": """You are a human resources manager. Input are resume (text) and the job requirements (JSON). You need to review the resume to see if the position the applicant is applying for is same as the position to be recruited, and whether the applicant meets the skills, experience, etc. required for the position. Aspect scores (1-10), and then based on the information in the resume, questions that can be asked in the interview are generated. Output the results in json format, for example: {"Position": "(position being applied)", "Major": "(highest degree major)", "Skill matching score": (1-10), "Experience score" :(1-10), "Interview questions":"[(question1), (question2), ...]"}"""},
-#             {"role": "user", "content": f"Job Requirement:\n{job_requirement}\nResume text:\n{resume_text}"}
-#         ],
-#         temperature=1,
-#         max_tokens=2000,
-#         top_p=1,
-#         frequency_penalty=0,
-#         presence_penalty=0
-#     )
-#     response_text = response.choices[0].message.content
-#     message = GptMessage(response_text)
-#     message_dict = message.parse_json()
+    major = result_dict['Major']
+    skill_score = result_dict['Skill matching score']
+    experience_score = result_dict['Experience score']
+    questions = result_dict['Interview questions']  # list
     
-#     return message_dict
+    return render_template("add-applicant.html", applicant, email, phone, links, major, skill_score, experience_score, questions)
