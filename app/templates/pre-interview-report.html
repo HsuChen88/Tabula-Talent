@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Interview Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .score-input {
+            font-weight: bold;
+        }
+
+        .rounded-box {
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+        }
+
+        .table-links a {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="font-semibold text-xl tracking-tight">Tabula-Talent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-8 sm:px-6">
+                <h1 class="text-3xl leading-6 font-medium text-gray-900">Pre-Interview Report</h1>
+            </div>
+            <div class="border-t border-gray-200">
+                <form action="|">
+                    <dl>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Position:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{position}}"
+                                    class="rounded-box w-full" disabled></dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Applicant:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{name}}"
+                                    class="rounded-box w-full" disabled></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Email:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="email"
+                                    value="{{email}}" class="rounded-box w-full" disabled></dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Phone:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" value="{{phone}}"
+                                    class="rounded-box w-full" disabled></dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-10 text-xl font-medium text-gray-500 flex items-center">Links:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2">
+                                <div class="flex justify-start">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-blue-200">
+                                            <tr>
+                                                <th scope="col"
+                                                    class="w-1/4 px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider text-center">
+                                                    Links
+                                                </th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider text-center">
+                                                    URL
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <!-- Multiple rows can be added here -->
+                                            <tr>
+                                                <td class="w-1/4 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">Github
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <a href="https://www.youtube.com/"
+                                                        class="text-blue-500 text-sm">https://www.youtube.com/</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/4 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">Linkedin
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <a href="https://www.youtube.com/"
+                                                        class="text-blue-500 text-sm">https://www.youtube.com/</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/4 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">Blog</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <a href="https://www.youtube.com/"
+                                                        class="text-blue-500 text-sm">https://www.youtube.com/</a>
+                                                </td>
+                                            </tr>
+                                            <!-- ... -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-10 text-xl font-medium text-gray-500 flex items-center">Scoring:</dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2">
+                                <div class="flex justify-start">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-violet-200">
+                                            <tr>
+                                                <th scope="col"
+                                                    class="w-1/4 px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider text-center">
+                                                    Aspect
+                                                </th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider text-center">
+                                                    Score
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="w-1/4 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">Skill Score
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <input type="number" value="10" class="score-input rounded-box"
+                                                        min="0" max="10" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/4 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">Experience
+                                                        Score</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <input type="number" value="10" class="score-input rounded-box"
+                                                        min="0" max="10" disabled>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/4 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">Interview
+                                                        Score</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <input type="number" value="10"
+                                                        class="score-input rounded-box border-black" min="0" max="10">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
+                            <dt class="mt-10 text-xl font-medium text-gray-500 flex items-center">Questions can be
+                                asked:
+                            </dt>
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2">
+                                <div class="mb-4">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-rose-200">
+                                            <tr>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider text-center">
+                                                    #
+                                                </th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider text-center">
+                                                    Question
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="w-1/5 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">1</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <div class="text-sm text-gray-900">How are you?</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/5 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">2</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <div class="text-sm text-gray-900">How are you?</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/5 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">3</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <div class="text-sm text-gray-900">How are you?</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </dd>
+                        </div>
+                        <button onclick="alert('submit')"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
+                            Submit
+                        </button>
+                </form>
+                </dl>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Your JavaScript goes here
+    </script>
+</body>
+
+</html>

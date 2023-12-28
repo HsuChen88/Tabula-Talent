@@ -10,25 +10,25 @@ from App import db
 def create_job(
     position: str,
     description: str,
-    reponsibility: str | dict[str, Any],
-    requirement: str | dict[str, Any],
-    education: str | dict[str, Any],
+    responsibility: str,
+    requirement: str,
+    education: str,
 ) -> Job:
-    new_job = Job(position, description, reponsibility, requirement, education)
+    new_job = Job(position, description, responsibility, requirement, education)
     db.session.add(new_job)
     db.session.commit()
     return new_job
 
 
 # R
-def get_job(position: str) -> Job | None:
-    job = Job.query.filter_by(position=position).first()
+def get_job(id: int) -> Job | None:
+    job = db.session.get(Job, id)
     return job
 
 
 # U (不可更改 position)
-def modify_job(position: str, **kwargs) -> Job | None:
-    job = Job.query.filter_by(position=position).first()
+def modify_job(id: int, **kwargs) -> Job | None:
+    job = db.session.get(Job, id)
     for key, val in kwargs.items():
         if key == "position":
             raise AttributeError("You cannot edit position column.")
@@ -39,8 +39,8 @@ def modify_job(position: str, **kwargs) -> Job | None:
     return job
 
 # D
-def remove_job(position: str) -> Job | None:
-    job = Job.query.filter_by(position=position).first()
+def remove_job(id: int) -> Job | None:
+    job = db.session.get(Job, id)
     db.session.delete(job)
     db.session.commit()
     return job

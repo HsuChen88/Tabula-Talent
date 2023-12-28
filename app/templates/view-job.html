@@ -33,21 +33,25 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-8 sm:px-6">
-                <h1 class="text-3xl leading-6 font-medium text-gray-900">Job1</h1>
+                <h1 class="text-3xl leading-6 font-medium text-gray-900">{{job.position}}</h1>
             </div>
             <div class="border-t border-gray-200">
                 <dl>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Description1:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">d1</dd>
+                        <dt class="text-sm font-medium text-gray-500">Description:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.description}}</dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Description2:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">d2</dd>
+                        <dt class="text-sm font-medium text-gray-500">Responsibility:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.responsibility}}</dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Description3:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">d3</dd>
+                        <dt class="text-sm font-medium text-gray-500">Requirement:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.requirement}}</dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Education:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.education}}</dd>
                     </div>
                 </dl>
             </div>
@@ -57,7 +61,7 @@
         <div class="mt-8">
             <div class="flex justify-start">
                 <h3 class="mt-2 ml-4 mr-4 text-xl leading-6 font-medium text-gray-900">Applicants: </h3>
-                <button onclick="alert('add')"
+                <button onclick="window.location.href='/add_applicant'"
                     class="ml-4 mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Add
                 </button>
@@ -88,10 +92,10 @@
                                     <div class="text-sm text-gray-900 text-center">applicant1</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">(email)</div>
+                                    <div class="text-sm text-gray-900 text-center">{{email}}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">(phone)</div>
+                                    <div class="text-sm text-gray-900 text-center">{{phone}}</div>
                                 </td>
                             </tr>
                             <!-- ... -->
@@ -147,11 +151,11 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                     <div class="flex justify-center">
-                                        <button onclick="window.location.href='/pre-interview-report'"
+                                        <button onclick="window.location.href='/pre_interview_report'"
                                             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
                                             Pre-Interview Report
                                         </button>
-                                        <button onclick="window.location.href='/final-result'"
+                                        <button onclick="window.location.href='/final_result'"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                             Final Result
                                         </button>
@@ -166,9 +170,7 @@
         </div>
     </div>
 
-    <script>
-        // JavaScript code can be added here if needed
-    </script>
+    <script></script>
 
 </body>
 
