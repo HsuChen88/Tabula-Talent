@@ -39,14 +39,14 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
       <div class="px-4 py-8 sm:px-6">
-        <h1 class="text-3xl leading-6 font-medium text-gray-900">Add applicant to Position</h1>
+        <h1 class="text-3xl leading-6 font-medium text-gray-900">Add Applicant to Position</h1>
       </div>
-      <form action="{{ url_for('add_applicant_submit') }}" method="post">
+      <form action="./submit" method="post">
         <div class="border-t border-gray-200">
           <dl>
             <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Position:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="Job1"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{ job.position }}"
                   class="border border-gray-300 p-2 rounded-md w-full" disabled></dd>
             </div>
             <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
@@ -59,17 +59,17 @@
 
             <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Applicant:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{ name }}"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" name="name" value="{{ name }}"
                   class="border border-gray-300 p-2 rounded-md w-full"></dd>
             </div>
             <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Email:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="email" value="shawn@gmail.com"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="email" name="email" value="{{ email }}"
                   class="border border-gray-300 p-2 rounded-md w-full"></dd>
             </div>
             <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Phone:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" value="0912345678"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" name="phone" value="{{ phone }}"
                   class="border border-gray-300 p-2 rounded-md w-full"></dd>
             </div>
             <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
@@ -131,16 +131,16 @@
       <h3 class="text-xl font-semibold mb-2">Show Score</h3>
       <table class="table-fixed border-collapse border border-gray-300 mx-auto mb-4">
         <tr>
-          <td class="border border-gray-300 px-4 py-2">Right Position:</td>
-          <td class="border border-gray-300 px-4 py-2">Yes</td>
+          <td class="border border-gray-300 px-4 py-2">Major:</td>
+          <td class="border border-gray-300 px-4 py-2">{{ Major }}</td>
         </tr>
         <tr>
           <td class="border border-gray-300 px-4 py-2">Skill Score:</td>
-          <td class="border border-gray-300 px-4 py-2">10</td>
+          <td class="border border-gray-300 px-4 py-2">{{ skill_score }}</td>
         </tr>
         <tr>
           <td class="border border-gray-300 px-4 py-2">Experience Score:</td>
-          <td class="border border-gray-300 px-4 py-2">10</td>
+          <td class="border border-gray-300 px-4 py-2">{{ experience_score }}</td>
         </tr>
       </table>
       <button onclick="alert('add')"
@@ -149,28 +149,6 @@
       <button onclick="alert('discard')"
         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Discard</button>
     </div>
-    <div id="scoreModal" class="hidden text-left">
-      <h3 class="text-xl font-semibold mb-2">Show Score</h3>
-      <table class="table-fixed border-collapse border border-gray-300 mx-auto mb-4">
-        <tr>
-          <td class="border border-gray-300 px-4 py-2">Right Position:</td>
-          <td class="border border-gray-300 px-4 py-2">Yes</td>
-        </tr>
-        <tr>
-          <td class="border border-gray-300 px-4 py-2">Skill Score:</td>
-          <td class="border border-gray-300 px-4 py-2">10</td>
-        </tr>
-        <tr>
-          <td class="border border-gray-300 px-4 py-2">Experience Score:</td>
-          <td class="border border-gray-300 px-4 py-2">10</td>
-        </tr>
-      </table>
-      <button onclick="alert('add')"
-        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Add to Database</button>
-      <button onclick="alert('discard')"
-        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Discard</button>
-    </div>
-
   </div>
   </form>
   </div>
