@@ -5,13 +5,10 @@ import pytesseract
 # Mention the installed location of Tesseract-OCR in your system
 pytesseract.pytesseract.tesseract_cmd = r'..\resource\Tesseract-OCR\tesseract.exe'
 
-
 def recognize_resume_image(image_path: str) -> str:
     
     # Read image from which text needs to be extracted
-    img = cv2.imread("../resource/"+image_path)
-
-    # Preprocessing the image starts
+    img = cv2.imread(image_path)
 
     # Convert the image to gray scale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
