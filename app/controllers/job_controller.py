@@ -9,13 +9,14 @@ from App import app, db
 from models.job import Job
 from services import job_service
 
+
 @app.route("/job-list")
 def show_jobs():
     return render_template("jobs.html")
 
-@app.route("/add_job")
-def add_job_template():
-    return render_template("add-job.html")
+@app.route("/add_job/<id>", methods=["GET"])
+def add_job_template(choosed_position):
+    return render_template("add-job.html", position=choosed_position)
 
 @app.route("/job", methods=["GET"])
 def get_job():
