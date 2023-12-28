@@ -15,22 +15,19 @@ from models.job import Job
 
 @app.route("/", methods=["GET"])
 def home():
-    return render_template("home.html", 
-                           description="Haha")
+    job_list = Job.query.all()
+    return render_template("home.html",
+                           job_list=job_list)
 
 ################################################
 ################### view-job ###################
 ################################################
 
-@app.route("/view_job", methods=["GET"])
-def view_job():
+@app.route("/view_job/<int:id>", methods=["GET"])
+def view_job(id: int):
+    job = job_service.get_job(id)
     return render_template("view-job.html", 
-                           description="11", 
-                           responsibility="22", 
-                           requirements="33", 
-                           education="44",
-                           email="Wooo~email!",
-                           phone="Wooo~phone!")
+                           job=job)
 
 ################################################
 #################### add-job ###################
@@ -49,11 +46,12 @@ def add_job_submit():
     """
     position = request.form["position"]
     description = request.form["description"]
-    responsility = request.form["responsility"]
+    responsibility = request.form["responsibility"]
+    requirement = request.form["requirement"]
     education = request.form["education"]
 
-    # 資料庫操作...
-    print(f"{position}, {description}, {responsility}, {education}")
+    # 資料庫操作
+    job_service.create_job(position, description, responsibility, requirement, education)
 
     return redirect(url_for("add_job"))
 

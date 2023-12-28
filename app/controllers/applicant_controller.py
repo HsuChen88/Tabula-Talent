@@ -20,12 +20,7 @@ def add_applicant_submit():
     -----
     收到新增 applicant 表單，資料庫新增 applicant，頁面重導向至 "/add_applicant"
     """
-    position = request.form["position"]
-    description = request.form["description"]
-    responsility = request.form["responsility"]
-    education = request.form["education"]
     
     # 資料庫操作...
-    print(f"{position}, {description}, {responsility}, {education}")
 
     return redirect(url_for("add_applicant"))
