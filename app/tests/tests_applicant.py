@@ -1,5 +1,3 @@
-# standard library
-
 # local library
 from services import applicant_service, job_service
 
