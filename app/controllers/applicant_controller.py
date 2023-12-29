@@ -1,38 +1,36 @@
 # third party library
 from flask import request, render_template, redirect, url_for
+import json
 
 # local library
 from App import app
-from services import applicant_service
-from services import job_service
+from services import applicant_service, job_service
+from models.applicant import Applicant
 
 ################################################
 ################# add-applicant ################
 ################################################
 
-@app.route("/add_applicant/<int:id>")
-def add_applicant(id: int, name: str='', email: str='', phone: str='', major: str= '', skill_score: str="", experience_score: str=""):
-    job = job_service.get_job(id)
-    return render_template("add-applicant.html", job=job, name=name, email=email, phone=phone, major=major, skill_score=skill_score, experience_score=experience_score)
+@app.route("/add_applicant/<int:job_id>", methods=["GET"])
+def add_applicant(job_id: int, applicant: Applicant = Applicant()):
+    job = job_service.get_job(job_id)
+    return render_template("add-applicant.html", job=job, applicant=applicant)
 
-@app.route("/add_applicant/<int:id>/submit", methods=["POST"])
-def add_applicant_submit(id: int):
+@app.route("/add_applicant/<int:job_id>/submit", methods=["POST"])
+def add_applicant_submit(job_id: int):
     """
     Brief
     -----
     收到新增 applicant 表單，資料庫新增 applicant，頁面重導向至 "/add_applicant"
     """
-    job = job_service.get_job(id)
+    job = job_service.get_job(job_id)
+    applicant_dict: dict = json.loads(request.form["submit-applicant"].replace("None", "null").replace("\'", "\""))
+    applicant_dict.pop("id")
+    print(applicant_dict)
+    # 資料庫操作
+    applicant_service.create_applicant(**applicant_dict)
+    # return render_template("add-applicant.html", job=job, applicant=Applicant())
 
-    if request.methods == "POST":
-        
-        username = request.form.get('username')
-        name = request.form.get('name')
-        email = request.form.get('email')
-        phone = request.form.get('phone')
-        
-        # 資料庫操作...
-        
-        return redirect(url_for("add_applicant"), job=job, name='', email='', phone='', major= '', skill_score="", experience_score="")
-    else:
-        return 
+    applicants = Applicant.query.filter_by(job_id=job_id).all()
+    return render_template('view-job.html', job=job, applicants=applicants)
+

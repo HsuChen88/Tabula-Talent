@@ -33,25 +33,25 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-8 sm:px-6">
-                <h1 class="text-3xl leading-6 font-medium text-gray-900">{{job.position}}</h1>
+                <h1 class="text-3xl leading-6 font-medium text-gray-900">{{ job.position}}</h1>
             </div>
             <div class="border-t border-gray-200">
                 <dl>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500 ml-8">Description:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.description}}</dd>
+                        <dt class="text-sm font-medium text-gray-500">Description:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ job.description}}</dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500 ml-8">Responsibility:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.responsibility}}</dd>
+                        <dt class="text-sm font-medium text-gray-500">Responsibility:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ job.responsibility}}</dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500 ml-8">Requirement:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.requirement}}</dd>
+                        <dt class="text-sm font-medium text-gray-500">Requirement:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ job.requirement}}</dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500 ml-8">Education:</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{job.education}}</dd>
+                        <dt class="text-sm font-medium text-gray-500">Education:</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ job.education}}</dd>
                     </div>
                 </dl>
             </div>
@@ -61,7 +61,7 @@
         <div class="mt-8">
             <div class="flex justify-start">
                 <h3 class="mt-2 ml-4 mr-4 text-xl leading-6 font-medium text-gray-900">Applicants: </h3>
-                <button onclick='window.location.href="/add_applicant/{{ job.id }}"'
+                <button onclick="window.location.href='/add_applicant/{{ job.id }}'"
                     class="ml-4 mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Add
                 </button>
@@ -86,19 +86,24 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <!-- Multiple rows can be added here -->
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">applicant1</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">{{ email }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">{{ phone }}</div>
-                                </td>
-                            </tr>
-                            <!-- ... -->
+                            {% if applicants %}
+                                {% for applicant in applicants %}
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 text-center">{{ applicant.name }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 text-center">{{ applicant.email }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 text-center">{{ applicant.phone }}</div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>
@@ -109,8 +114,8 @@
         <div class="mt-8">
             <div class="flex justify-start">
                 <h3 class="mt-2 ml-4 mr-4 text-xl leading-6 font-medium text-gray-900">Interview List: </h3>
-                <button onclick="alert('add')"
-                    class="ml-4 mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button 
+                    class="ml-4 mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="addInterviewBtn">
                     Add
                 </button>
             </div>
@@ -138,16 +143,15 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <!-- Multiple rows can be added here -->
-                            <tr>
+                            <tr class="hidden" id="interviewee">
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">applicant1</div>
+                                    <div class="text-sm text-gray-900 text-center">John A. Thompson</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">(email)</div>
+                                    <div class="text-sm text-gray-900 text-center">john.thompson@email.com</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900 text-center">(phone)</div>
+                                    <div class="text-sm text-gray-900 text-center">(555) 555-1234</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                     <div class="flex justify-center">
@@ -162,7 +166,37 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!-- ... -->
+
+                            <!-- {% if interviewed_applicants %}
+                                {% for interviewed_applicant in interviewed_applicants %}
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 text-center">{{ interviewed_applicant.name }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 text-center">{{ interviewed_applicant.email }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900 text-center">{{ interviewed_applicant.phone }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                        <div class="flex justify-center">
+                                            <button onclick="window.location.href='/pre_interview_report'"
+                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                                Pre-Interview Report
+                                            </button>
+                                            <button onclick="window.location.href='/final_result'"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Final Result
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                            <tr>
+                            </tr>
+                            {% endif %} -->
                         </tbody>
                     </table>
                 </div>
@@ -170,8 +204,12 @@
         </div>
     </div>
 
-    <script></script>
-
+    <script>
+        document.getElementById('addInterviewBtn').addEventListener('click', function () {
+          document.getElementById('interviewee').classList.toggle('hidden');
+        });
+      </script>
+    
 </body>
 
 </html>

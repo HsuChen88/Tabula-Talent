@@ -37,11 +37,13 @@
 
   <!-- Main Content -->
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
       <div class="px-4 py-8 sm:px-6">
-        <h1 class="text-3xl leading-6 font-medium text-gray-900">Add Applicant to Position</h1>
+        <h1 class="text-3xl leading-6 font-medium text-gray-900">Add applicant to Position</h1>
       </div>
-      <form action="./submit" method="post">
+      <form action="{{ url_for('applicant_assessment', job_id=job.id) }}" method="post" enctype="multipart/form-data">
         <div class="border-t border-gray-200">
           <dl>
             <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
@@ -52,24 +54,24 @@
             <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Resume:</dt>
               <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"> <input type="file" id="resume" name="resume"
-                  accept="image/*" class="border border-gray-300 p-2 rounded-md w-full">
+                  accept="image/*" enctype="multipart/form-data" class="border border-gray-300 p-2 rounded-md w-full">
                 <p class="input-hint">The information below will be automatically filled after scanning the resume.</p>
               </dd>
             </div>
 
             <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Applicant:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" name="name" value="{{ name }}"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{ applicant.name }}"
                   class="border border-gray-300 p-2 rounded-md w-full"></dd>
             </div>
             <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Email:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="email" name="email" value="{{ email }}"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="email" value="{{ applicant.email }}"
                   class="border border-gray-300 p-2 rounded-md w-full"></dd>
             </div>
             <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
               <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Phone:</dt>
-              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" name="phone" value="{{ phone }}"
+              <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" value="{{ applicant.phone }}"
                   class="border border-gray-300 p-2 rounded-md w-full"></dd>
             </div>
             <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
@@ -89,32 +91,21 @@
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200">
-                    <!-- Multiple rows can be added here -->
-                    <tr>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900 text-center font-bold">Github</div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-center">
-                        <a href="https://www.youtube.com/" class="text-blue-500 text-sm">https://www.youtube.com/</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900 text-center font-bold">Linkedin</div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-center">
-                        <a href="https://www.youtube.com/" class="text-blue-500 text-sm">https://www.youtube.com/</a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900 text-center font-bold">Blog</div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-center">
-                        <a href="https://www.youtube.com/" class="text-blue-500 text-sm">https://www.youtube.com/</a>
-                      </td>
-                    </tr>
-                    <!-- ... -->
+                    {% if applicant.link %}
+                      {% for link_name, hyperlink in applicant.link.items() %}
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="text-sm text-gray-900 text-center font-bold">{{ link_name }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                          <a href="{{ hyperlink }}" class="text-blue-500 text-sm">{{ hyperlink }}</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    {% else %}
+                      <tr>
+                      </tr>
+                    {% endif %}
                   </tbody>
                 </table>
               </dd>
@@ -122,35 +113,37 @@
 
           </dl>
         </div>
+      <button id="verifyBtn"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4 my-8">Verify</button>
       </form>
     </div>
 
-    <button id="verifyBtn"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4">Verify</button>
-    <div id="scoreModal" class="hidden">
+    <div id="scoreModal" class="my-4">
       <h3 class="text-xl font-semibold mb-2">Show Score</h3>
       <table class="table-fixed border-collapse border border-gray-300 mx-auto mb-4">
         <tr>
-          <td class="border border-gray-300 px-4 py-2">Major:</td>
-          <td class="border border-gray-300 px-4 py-2">{{ Major }}</td>
+          <td class="border border-gray-300 px-4 py-2">Right Position:</td>
+          <td class="border border-gray-300 px-4 py-2">{{ "Yes" if job.id == applicant.job_id else "No" }}</td>
         </tr>
         <tr>
           <td class="border border-gray-300 px-4 py-2">Skill Score:</td>
-          <td class="border border-gray-300 px-4 py-2">{{ skill_score }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ applicant.skill_score }}</td>
         </tr>
         <tr>
           <td class="border border-gray-300 px-4 py-2">Experience Score:</td>
-          <td class="border border-gray-300 px-4 py-2">{{ experience_score }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ applicant.experience_score }}</td>
         </tr>
       </table>
-      <button onclick="alert('add')"
-        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Add to
-        Database</button>
-      <button onclick="alert('discard')"
-        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Discard</button>
+      <div class="flex">
+        <form action="{{ url_for('add_applicant_submit', job_id=job.id) }}" method="post">
+          <button name="submit-applicant" value="{{ applicant.jsonify() }}"
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">Add to
+            Database</button>
+        </form>
+        <button onclick="window.location.href='/add_applicant/{{ job.id }}'"
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Discard</button>
+      </div>
     </div>
-  </div>
-  </form>
   </div>
 
   <script>

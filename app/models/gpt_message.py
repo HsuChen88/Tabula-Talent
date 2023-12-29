@@ -7,6 +7,7 @@ class GptMessage:
         self.original_text = original_text
 
     def parse_json(self) -> dict:
+        data_dict = {}
         try:
             data_dict = json.loads(self.original_text)
         except json.JSONDecodeError as e:
@@ -18,7 +19,8 @@ class GptMessage:
 # Example usage:
 message = GptMessage(
     """
-            { "Position": "Manufacturing Engineer", 
+            {
+              "Position": "Manufacturing Engineer", 
               "Same position": "Yes", 
               "Skill matching score": 8, 
               "Experience score": 7, 
@@ -31,9 +33,10 @@ message = GptMessage(
             }
     """
 )
-# job_content = message.parse_job_content()
-assessment = message.parse_json()
 
-# print(job_content)
-for key, value in assessment.items():
-    print(f"Key: {key}, Value: {value}")
+# job_content = message.parse_job_content()
+# assessment = message.parse_json()
+
+# # print(job_content)
+# for key, value in assessment.items():
+#     print(f"Key: {key}, Value: {value}")

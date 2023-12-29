@@ -22,16 +22,16 @@ class Applicant(db.Model, Jsonifiable):
 
     def __init__(
         self,
-        name: str,
-        phone: str,
-        email: str,
-        link: str | dict[str, Any],
-        major: str,
-        questions: str | dict[str, Any],
-        skill_score: int,
-        experience_score: int,
-        interview_score: int,
-        job_id: int
+        name: str = "",
+        phone: str = "",
+        email: str = "",
+        link: dict[str, str] = dict(),
+        major: str = "",
+        questions: list[str] = [],
+        skill_score: int = 0,
+        experience_score: int = 0,
+        interview_score: int = 0,
+        job_id: int = 0
     ) -> None:
         self.name = name
         self.phone = phone
@@ -52,6 +52,7 @@ class Applicant(db.Model, Jsonifiable):
             "phone": self.phone,
             "email": self.email,
             "link": self.link,
+            "major": self.major,
             "questions": self.questions,
             "skill_score": self.skill_score,
             "experience_score": self.experience_score,

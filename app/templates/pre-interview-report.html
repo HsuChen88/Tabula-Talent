@@ -45,26 +45,26 @@
                 <h1 class="text-3xl leading-6 font-medium text-gray-900">Pre-Interview Report</h1>
             </div>
             <div class="border-t border-gray-200">
-                <form action="|">
+                <form action="#">
                     <dl>
                         <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
                             <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Position:</dt>
-                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{position}}"
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="Manufacturing Engineer"
                                     class="rounded-box w-full" disabled></dd>
                         </div>
                         <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
                             <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Applicant:</dt>
-                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="{{name}}"
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="text" value="John A. Thompson"
                                     class="rounded-box w-full" disabled></dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
                             <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Email:</dt>
                             <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="email"
-                                    value="{{email}}" class="rounded-box w-full" disabled></dd>
+                                    value="john.thompson@email.com" class="rounded-box w-full" disabled></dd>
                         </div>
                         <div class="bg-white px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
                             <dt class="mt-2 text-xl font-medium text-gray-500 flex items-center">Phone:</dt>
-                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" value="{{phone}}"
+                            <dd class="text-xl text-gray-900 xl:mt-0 xl:col-span-2"><input type="tel" value="(555) 555-1234"
                                     class="rounded-box w-full" disabled></dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 xl:grid xl:grid-cols-3 xl:gap-4 xl:px-6">
@@ -93,7 +93,7 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
                                                     <a href="https://www.youtube.com/"
-                                                        class="text-blue-500 text-sm">https://www.youtube.com/</a>
+                                                        class="text-blue-500 text-sm">https://www.github.com/johnathompson</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -103,7 +103,7 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
                                                     <a href="https://www.youtube.com/"
-                                                        class="text-blue-500 text-sm">https://www.youtube.com/</a>
+                                                        class="text-blue-500 text-sm">https://www.linkedin.com/in/johnathompson</a>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -112,7 +112,7 @@
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
                                                     <a href="https://www.youtube.com/"
-                                                        class="text-blue-500 text-sm">https://www.youtube.com/</a>
+                                                        class="text-blue-500 text-sm">https://www.johnsthoughts.com"</a>
                                                 </td>
                                             </tr>
                                             <!-- ... -->
@@ -165,7 +165,7 @@
                                                         Score</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                    <input type="number" value="10"
+                                                    <input type="number" value="0"
                                                         class="score-input rounded-box border-black" min="0" max="10">
                                                 </td>
                                             </tr>
@@ -199,7 +199,7 @@
                                                     <div class="text-sm text-gray-900 text-center font-bold">1</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                    <div class="text-sm text-gray-900">How are you?</div>
+                                                    <div class="text-sm text-gray-900">Can you provide an example of a process improvement project you led?</div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -207,7 +207,7 @@
                                                     <div class="text-sm text-gray-900 text-center font-bold">2</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                    <div class="text-sm text-gray-900">How are you?</div>
+                                                    <div class="text-sm text-gray-900">How have you utilized lean principles to optimize production efficiency?</div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -215,7 +215,15 @@
                                                     <div class="text-sm text-gray-900 text-center font-bold">3</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-center">
-                                                    <div class="text-sm text-gray-900">How are you?</div>
+                                                    <div class="text-sm text-gray-900">Tell us a time you faced a challenge in improving production quality processes. How you overcame it?</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-1/5 px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900 text-center font-bold">4</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-center">
+                                                    <div class="text-sm text-gray-900">How do you stay updated on industry trends and technological advancements in manufacturing?</div>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -223,8 +231,8 @@
                                 </div>
                             </dd>
                         </div>
-                        <button onclick="alert('submit')"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
+                        <button onclick="alert('Final report has been generated.')"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-4 mt-8 mb-4">
                             Submit
                         </button>
                 </form>

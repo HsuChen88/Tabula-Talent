@@ -51,13 +51,15 @@
       {% if job_list %}
         {% for job in job_list %}
         <!-- Repeat this block for each job card -->
-        <div class="bg-white p-4 rounded shadow hover-animation">
-          <h3 class="text-2xl font-bold mb-4 text-center font-bold">{{job.position}}</h3>
-          <p class="text-gray-700 mb-2">description: {{job.description}}</p>
+        <div class="bg-white p-4 rounded shadow hover-animation flex flex-col h-full">
+          <h3 class="text-xl font-bold mb-4 text-center font-bold">{{ job.position }}</h3>
+          <p class="text-gray-700 mb-2">description:<br><br> {{ job.description }}</p>
+          <div class="flex-grow"></div>
           <a href="/view_job/{{ job.id }}" class="block text-center bg-orange-600 text-white rounded p-2 hover:bg-orange-700">
             VIEW JOB
           </a>
         </div>
+        
         <!-- End of job card block -->
         {% endfor %}
       {% else %}

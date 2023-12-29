@@ -6,8 +6,9 @@ from flask import Response, request, render_template, redirect, url_for
 
 # local library
 from App import app, db
-from services import job_service
+from services import job_service, applicant_service
 from models.job import Job
+from models.applicant import Applicant
 
 ################################################
 ##################### home #####################
@@ -26,8 +27,9 @@ def home():
 @app.route("/view_job/<int:id>", methods=["GET"])
 def view_job(id: int):
     job = job_service.get_job(id)
+    applicants = Applicant.query.filter_by(job_id=id).all()
     return render_template("view-job.html", 
-                           job=job)
+                           job=job, applicants=applicants)
 
 ################################################
 #################### add-job ###################
@@ -53,7 +55,7 @@ def add_job_submit():
     # 資料庫操作
     job_service.create_job(position, description, responsibility, requirement, education)
 
-    return redirect(url_for("add_job"))
+    return redirect(url_for("home"))
 
 
 
