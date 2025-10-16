@@ -1,4 +1,5 @@
-# TabulaTalent Backend
+# Tabula Talent – AI Talent Recruiter
+<img width="2813" height="1287" alt="image" src="https://github.com/user-attachments/assets/479b3b0a-acb1-4b44-b306-37f9936b87e0" />
 
 ## Setting up the Project
 0. Make sure that you have [Python 3.11 or newer](https://www.python.org/downloads/) and [Docker](https://www.docker.com/) installed in your system. You must also have [Docker Account and login to Docker in the CLI](https://docs.docker.com/docker-hub/access-tokens/#use-an-access-token).
